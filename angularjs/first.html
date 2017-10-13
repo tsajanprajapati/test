@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+ 
+　<head>
+　 <meta charset="utf-8">
+ 
+　　<!-- 見た目用にBootstrapを使う -->
+ 
+　　<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ 
+　　<!-- AngularJS 1.5を公式サイトから引っ張ってくる -->
+ 
+　　<script src="//code.angularjs.org/1.5.7/angular.min.js"></script>
+ 
+　　<!-- ↓↓↓自分で作ったJavaScriptはここから↓↓↓ -->
+ 
+　　<script src="myApp.js"></script>
+ 
+　</head>
+ 
+　<!-- 省略 -->
+　<body class="container">
+ 
+　　<div ng-controller="AppController">
+ 
+　　　<div>
+ 
+　　　　<h1>form</h1>
+ 
+　　　　<form ng-submit="submit()">
+ 
+　　　　　<div class="form-group">
+ 
+　　　　　　<label for="username">ユーザー名</label>
+ 
+　　　　　　<input type="text" class="form-control" id="username" placeholder="twitterのユーザー名を入力" ng-model="username">
+　
+　　　　　</div>
+ 
+　　　　　　<button type="submit" class="btn btn-primary">submit</button>
+　　　　　　<!--<button type="submit" class="btn btn-primary">not</button>-->
+　　　　</form>
+ 
+　　　</div>
+ 
+　　　　<hr>
+ 
+　　　<div>
+ 
+　　　　<h1>user list</h1>
+ 
+　　　　<ul>
+ 
+　　　　<!-- 繰り返したいタグに対してng-repeatを使う -->
+ 
+　　　　<li style="padding: 5px" ng-repeat="user in users">
+ 
+　　　　　<div>
+ 
+　　　　　　<!-- ng-repeat内のuserをタグで囲まれた範囲内で使うことができます -->
+ 
+　　　　　　<a href="{{user.url}}" target="_blank">{{user.username}}</a>
+ 
+　　　　　</div>
+ 
+　　　　</li>
+ 
+　　　　</ul>
+ 
+　　　</div>
+ 
+　　</div>
+　</body>
+ 
+</html>

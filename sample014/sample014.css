@@ -1,0 +1,66 @@
+.btn_area {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 260px;
+    height: 100px;
+    background-color: #DDDDDD
+}
+
+.display_area {
+    position:absolute;
+    top: 250px;
+    left: 50px;
+    height: 170px;
+    width: 300px;
+    background-color: #55FFFF;
+}
+
+.param1 {
+    position: absolute;
+    top: 20px;
+    left:20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+
+.ope {
+    position: absolute;
+    top: 25px;
+    left: 100px;
+    height: 50px;
+    width: 50px;
+    background-color: #AAAAFF;
+}
+
+.param2 {
+    position: absolute;
+    top: 20px;
+    left:180px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+
+.result {
+    position: absolute;
+    top:20px;
+    left:50px;
+    height: 50px;
+    width: 200px;
+    background-color: #FFFF99;
+}
+
+.clear {
+    position: absolute;
+    top:100px;
+    left:50px;
+    height: 50px;
+    width: 200px;
+    background-color: #11FF11;
+}
+
+body {
+    text-align: center;
+}

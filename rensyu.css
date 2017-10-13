@@ -1,0 +1,15 @@
+.text {
+    position: absolute;
+    left: 300px;
+    top: 200px;
+    color: #ffffff;
+    text-align: center;
+}
+
+img {
+    width: 700px;
+}
+
+img:hover {
+    width: 900px;
+}

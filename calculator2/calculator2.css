@@ -1,0 +1,115 @@
+.calc_pos {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+button {
+    height: 50px;
+    width: 50px;
+    background-color: #808180;
+    color: #ffffff;
+}
+
+/*row1*/
+.number0, .number1, .number2, .number3, .function0, .function1, .function2, .function3{
+    position: absolute;
+    top:200px;
+}
+
+/*row2*/
+.number4, .number5, .number6, .number7, .operator0, .operator1, .operator2, .operator3{
+    position: absolute;
+    top:260px;
+}
+
+/*row3*/
+.number8, .number9, .number10, .number11, .equal{
+    position: absolute;
+    top:320px;
+}
+
+
+/*column1*/
+.number0, .number4, .number8 {
+    position: absolute;
+    left: 0px;
+}
+
+/*column2*/
+.number1, .number5, .number9 {
+    position: absolute;
+    left: 60px;
+}
+
+
+/*column3*/
+.number2, .number6, .number10  {
+    position: absolute;
+    left: 120px;
+}
+
+
+/*column4*/
+.number3, .number7, .number11 {
+    position: absolute;
+    left: 180px;
+}
+
+/*column5*/
+.function0, .operator0 {
+    position: absolute;
+    left: 240px;
+}
+
+.function1, .operator1 {
+    position: absolute;
+    left: 300px;
+    
+}
+
+.operator2, .function2 {
+    position: absolute;
+    left: 360px;
+    
+}
+
+.operator3, .function3 {
+    position: absolute;
+    left: 420px;
+    
+}
+
+.equal {
+    position: absolute;
+    left: 240px;
+    width: 230px;
+    height: 50px;
+}
+
+.display {
+    position: absolute;
+    top: 140px;
+    left: 0px;
+    width: 430px;
+    height: 10px;
+    line-height: 10px;
+    background-color: #8AAEBC;
+    text-align: right;
+    padding: 20px;
+}
+
+.function1, .function2, .function3 {
+    background-color: #e94870
+}
+
+.operation button{
+    background-color: #01549c;
+}
+
+.equal {
+    background-color: #2d6808;
+}
