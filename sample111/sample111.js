@@ -22,5 +22,5 @@ for (var i = 1; i < num.length; i++) {
 
 // 「min:X / max:X」
 
-disp =  "「min:" + min + " / max:" + max + "」";
+disp =  "the result is:「min:" + min + " / max:" + max + "」";
 console.log(disp);
