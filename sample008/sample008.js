@@ -1,6 +1,7 @@
 'use strict';
 
 $(function(){
+    console.log("test");
     var divBtn1 = $('#btn1');
     var divBtn2 = $('#btn2');
     var divBtn3 = $('#btn3');
