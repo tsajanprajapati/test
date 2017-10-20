@@ -12,5 +12,5 @@ for (var i = 1; i<= 60; i++) {
         result = i;
     }
     
-    console.log(i + "->" + result);
+    console.log(i + "----->" + result);
 }

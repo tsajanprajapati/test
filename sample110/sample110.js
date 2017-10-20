@@ -39,3 +39,4 @@ for (var i = 1; i < positions.length; i++) {
 }
 disp += "」";
 console.log(disp);
+alert(disp);

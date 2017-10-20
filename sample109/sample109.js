@@ -7,7 +7,7 @@ disp = num[0];
 for (var i = 1; i < num.length; i++) {
     disp = disp + "," + num[i];
 }
-console.log(disp);
+
 
 for (var i = 0; i < (num.length - 1); i++) {
     for (var j = i + 1; j < num.length; j++) {
