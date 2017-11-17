@@ -1,0 +1,72 @@
+#mines {
+    position:relative;
+    top:50px;
+    left:200px;
+    height: 310px;
+    width: 310px;
+    background-color: #BCC2C6;
+}
+
+/*#mines div {*/
+/*    position: absolute;*/
+/*    top: 5;*/
+/*    left: 5;*/
+/*    height: 50px;*/
+/*    width: 50px;*/
+/*    background-color: #7e8b8c;*/
+/*}*/
+#mines div {
+    height: 50px;
+    width: 50px;
+    background-color: #7e8b8c;
+}
+
+#mines .row0 {
+    position: absolute;
+    top: 10px;
+}
+
+#mines .row1 {
+    position: absolute;
+    top: 70px;
+}
+
+#mines .row2 {
+    position: absolute;
+    top: 130px;
+}
+
+#mines .row3 {
+    position: absolute;
+    top: 190px;
+}
+
+#mines .row4 {
+    position: absolute;
+    top: 250px;
+}
+
+#mines .column0 {
+    position: absolute;
+    left: 10px;
+}
+
+#mines .column1 {
+    position: absolute;
+    left: 70px;
+}
+
+#mines .column2 {
+    position: absolute;
+    left: 130px;
+}
+
+#mines .column3 {
+    position: absolute;
+    left: 190px;
+}
+
+#mines .column4 {
+    position: absolute;
+    left: 250px;
+}
