@@ -15,18 +15,10 @@ $(function(){
     console.log(BombPosX);
     console.log(BombPosY);
     
-    // $cell[0,0] = $("<div>", { "id": "box0", "class": "box0"});
-    // $divMain.append($cell[0,0]);
+   
     var idx = 0;
     for (var i = 0; i<5; i++) {
         for (var j = 0; j<5; j++){
-            // $cell[i,j] = $("<div>", { "id": i +','+ j, "class": "row" + i + " " + "column" + j });
-            // $divMain.append($cell[i,j]);
-            // $cell[i,j].on('click', function(e) {
-            //     $(this).css("background-color","blue");
-            //     btnClicked(this.id);
-            // });
-            
             cell[idx] = {
                 box: $("<div>", { "id": i +','+ j, "class": "row" + i + " " + "column" + j }),
                 clicked: false,
@@ -35,10 +27,6 @@ $(function(){
             };
             
             $divMain.append(cell[idx].box);
-            // ($cell[i,j].box).on('click', function(e) {
-            //     $(this).css("background-color","blue");
-            //     console.log($cell[i,j].cellX, $cell[i,j].cellY);
-            // });
             idx++;
         } 
     }
@@ -46,17 +34,31 @@ $(function(){
     console.log(cell[0]);
     console.log(cell[1]);
     console.log(cell[2]);
+
     
-    // ($cell[0,0].box).on('click', function(e) {
-    //             $(this).css("background-color","blue");
-    // });
+    function createCallback( i ){
+        return function(){
+            console.log('you clicked cell' + i);
+            cell[i].clicked = true;
+            for (var bChk = 0; bChk < 3; bChk++) {
+                if ((cell[i].cellX == BombPosX[bChk])&&(cell[i].cellY == BombPosY[bChk])) {
+                    cell[i].box.css("background-color","red");
+                    break;
+                }
+                else {
+                    cell[i].box.css("background-color","blue");
+                }
+            }
+           
+            
+        }
+    }
     
-    
-    // function btnClicked(btnId) {
-    //     console.log(btnId);
-    //     console.log(btnId.slice(-1));
-    //     console.log(btnId.slice(-2));
-    // }
+    $(document).ready(function(){
+        for(var i = 0; i < cell.length; i++) {
+            (cell[i].box).click( createCallback( i ) );
+        }
+    });
     
     
 });
