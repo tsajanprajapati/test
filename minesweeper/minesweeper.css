@@ -5,6 +5,9 @@
     height: 310px;
     width: 310px;
     background-color: #BCC2C6;
+    text-align: center;
+    line-height: 50px;
+    color:white;
 }
 #mines div {
     height: 50px;
