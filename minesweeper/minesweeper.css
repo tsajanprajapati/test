@@ -1,66 +1,81 @@
 #mines {
     position:relative;
-    top:50px;
-    left:200px;
-    height: 310px;
-    width: 310px;
+    top:30px;
+    left:30px;
     background-color: #BCC2C6;
     text-align: center;
-    line-height: 50px;
+    line-height: 30px;
     color:white;
+    margin-left: auto;
+    margin-right: auto;
 }
 #mines div {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     background-color: #7e8b8c;
+    
 }
 
-#mines .row0 {
-    position: absolute;
-    top: 10px;
+#reload {
+    position: relative;
+    /*top: 5px;*/
+    /*left: 30px;*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+    width: 70px;
+    background-color: #BCC2C6;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /*line-height: 50px;*/
 }
 
-#mines .row1 {
-    position: absolute;
-    top: 70px;
-}
+/*#mines .row0 {*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*}*/
 
-#mines .row2 {
-    position: absolute;
-    top: 130px;
-}
+/*#mines .row1 {*/
+/*    position: absolute;*/
+/*    top: 70px;*/
+/*}*/
 
-#mines .row3 {
-    position: absolute;
-    top: 190px;
-}
+/*#mines .row2 {*/
+/*    position: absolute;*/
+/*    top: 130px;*/
+/*}*/
 
-#mines .row4 {
-    position: absolute;
-    top: 250px;
-}
+/*#mines .row3 {*/
+/*    position: absolute;*/
+/*    top: 190px;*/
+/*}*/
 
-#mines .column0 {
-    position: absolute;
-    left: 10px;
-}
+/*#mines .row4 {*/
+/*    position: absolute;*/
+/*    top: 250px;*/
+/*}*/
 
-#mines .column1 {
-    position: absolute;
-    left: 70px;
-}
+/*#mines .column0 {*/
+/*    position: absolute;*/
+/*    left: 10px;*/
+/*}*/
 
-#mines .column2 {
-    position: absolute;
-    left: 130px;
-}
+/*#mines .column1 {*/
+/*    position: absolute;*/
+/*    left: 70px;*/
+/*}*/
 
-#mines .column3 {
-    position: absolute;
-    left: 190px;
-}
+/*#mines .column2 {*/
+/*    position: absolute;*/
+/*    left: 130px;*/
+/*}*/
 
-#mines .column4 {
-    position: absolute;
-    left: 250px;
-}
+/*#mines .column3 {*/
+/*    position: absolute;*/
+/*    left: 190px;*/
+/*}*/
+
+/*#mines .column4 {*/
+/*    position: absolute;*/
+/*    left: 250px;*/
+/*}*/

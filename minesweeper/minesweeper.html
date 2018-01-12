@@ -14,6 +14,49 @@
 
 <body>
 <h1 class="test">Minesweeper</h1>
+<form method="post" name="newGame" id="gameSet">
+    <table border="0">
+        <tr>
+            <td></td>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Mines</th>
+        </tr>
+        <tr>
+            <td><input type="radio" name="level" value="1" checked>Begineer</td>
+            <td>9</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="level" value="2">Intermediate</td>
+            <td>16</td>
+            <td>16</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="level" value="3">Expert</td>
+            <td>16</td>
+            <td>30</td>
+            <td>99</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="level" value="4">Custom<br>
+            </td>
+            <td><input class="custom" type="text" name="height" size="3" /></td>
+            <td><input class="custom" type="text" name="width"  size="3"/></td>
+            <td><input class="custom" type="text" name="mines" size="3" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="New Game" /></td>
+        </tr>
+    </table>
+</form>
+
+<!--<a href="minesweeper.html">-->
+<!--    <div id="reload">Reload</div>-->
+<!--</a>-->
 
 <div id="mines" class="minesweeper"></div>
 
