@@ -7,6 +7,7 @@ $(function(){
     var cellNUms = rows * columns;
     var bombNums = 10;
     var $divMain = $("#mines");
+    var bombCnt = 0;
     
     var level = 1;
     
@@ -15,15 +16,25 @@ $(function(){
     var cell = [];
     var BombPosX = [];
     var BombPosY = [];
+    var overlapChk = false;
     // var rand = 0;
     // Math.floor((Math.random() * 10) + 1);
     
     mainGame();
     
     function mainGame() {
+        bombCnt = 0;
         for (var i = 0; i < bombNums; i++) {
-            BombPosX[i] = Math.floor(Math.random() * (rows-1));
-            BombPosY[i] = Math.floor(Math.random() * (columns-1));
+            do {
+                BombPosX[i] = Math.floor(Math.random() * (rows-1));
+                BombPosY[i] = Math.floor(Math.random() * (columns-1));
+                overlapChk = false;
+                for (var j = 0; j < i; j++) {
+                    if ((BombPosX[i] == BombPosX[j])&&(BombPosY[i] == BombPosY[j])) {
+                        overlapChk = true;
+                    }
+                }
+            }while(overlapChk == true);
         }
         
         
@@ -80,14 +91,21 @@ $(function(){
         
         
         //assign bombs
+        
         for (var i=0; i<bombNums; i++) {
             for (var j=0; j<cell.length; j++){
                 if((cell[j].cellX == BombPosX[i]) && (cell[j].cellY == BombPosY[i])){
                     cell[j].bomb = true;
-                   
                 }
             }
         }
+        
+        for(var i = 0; i< cell.length; i++) {
+            if (cell[i].bomb == true){
+                bombCnt++;
+            }
+        }
+        console.log(bombCnt);
         
         //assign numbers
         for (var j=0; j<cell.length; j++){
@@ -142,6 +160,15 @@ $(function(){
             }
         }
         
+        //function for cell right clicked
+        function rightClicked( i ) {
+            return function(){
+                alert(i);
+            }
+        }
+        
+        
+        
         //function for cell open
         function cellOpen(i) {
             if (cell[i].clicked == false) {
@@ -170,6 +197,21 @@ $(function(){
         });
         
         
+        //rightclick event
+    
+        // (cell[0].box).on('contextmenu', function(){
+        //     // alert('right clicked');
+        //     return false;
+        // });
+        
+        $(document).ready(function(){
+            for(var i = 0; i < cell.length; i++) {
+                (cell[i].box).contextmenu(rightClicked(i));
+            }
+        });
+        
+        
+        
         function bombClicked(i){
             for(var j=0;j<cellNUms; j++) {
                 cell[j].clicked = true;
@@ -178,7 +220,7 @@ $(function(){
                 }
             }
             
-            alert('Game Over');
+            // alert('Game Over');
         }
         
         
@@ -241,7 +283,7 @@ $(function(){
         $inputs.each(function() {
             values[this.name] = $(this).val();
         });
-        console.log(level);
+        // console.log(level);
         console.log(values['height']);
         if (level == 1) {
             rows = 9;
