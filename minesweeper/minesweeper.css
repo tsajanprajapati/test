@@ -13,7 +13,6 @@
     height: 30px;
     width: 30px;
     background-color: #7e8b8c;
-    
 }
 
 #reload {
@@ -30,52 +29,14 @@
     /*line-height: 50px;*/
 }
 
-/*#mines .row0 {*/
-/*    position: absolute;*/
-/*    top: 10px;*/
-/*}*/
-
-/*#mines .row1 {*/
-/*    position: absolute;*/
-/*    top: 70px;*/
-/*}*/
-
-/*#mines .row2 {*/
-/*    position: absolute;*/
-/*    top: 130px;*/
-/*}*/
-
-/*#mines .row3 {*/
-/*    position: absolute;*/
-/*    top: 190px;*/
-/*}*/
-
-/*#mines .row4 {*/
-/*    position: absolute;*/
-/*    top: 250px;*/
-/*}*/
-
-/*#mines .column0 {*/
-/*    position: absolute;*/
-/*    left: 10px;*/
-/*}*/
-
-/*#mines .column1 {*/
-/*    position: absolute;*/
-/*    left: 70px;*/
-/*}*/
-
-/*#mines .column2 {*/
-/*    position: absolute;*/
-/*    left: 130px;*/
-/*}*/
-
-/*#mines .column3 {*/
-/*    position: absolute;*/
-/*    left: 190px;*/
-/*}*/
-
-/*#mines .column4 {*/
-/*    position: absolute;*/
-/*    left: 250px;*/
-/*}*/
+.dialouge{
+    position:absolute;
+    left: 600px;
+    top: 100px;
+    margin-left:auto;
+    margin-right:auto;
+    height:145px;
+    width:250px;
+    border: solid 1px;
+    visibility: hidden;
+}

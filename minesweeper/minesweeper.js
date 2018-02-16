@@ -1,28 +1,21 @@
 'use strict';
-
 $(function(){
-    // 
     var rows = 9;
     var columns = 9;
     var cellNUms = rows * columns;
     var bombNums = 10;
     var $divMain = $("#mines");
     var bombCnt = 0;
-    
     var level = 1;
-    
     var $gameSet = $("#gameSet");
-    
     var cell = [];
     var BombPosX = [];
     var BombPosY = [];
     var overlapChk = false;
-    // var rand = 0;
-    // Math.floor((Math.random() * 10) + 1);
     
     mainGame();
-    
     function mainGame() {
+        $("#dialouge").css("visibility","hidden");
         bombCnt = 0;
         for (var i = 0; i < bombNums; i++) {
             do {
@@ -36,13 +29,6 @@ $(function(){
                 }
             }while(overlapChk == true);
         }
-        
-        
-        // console.log(BombPosX);
-        // console.log(BombPosY);
-        
-       
-       
        //create box objects
         var idx = 0;
         for (var i = 0; i<rows; i++) {
@@ -53,7 +39,8 @@ $(function(){
                     cellX: i,
                     cellY: j,
                     Num: 0,
-                    bomb: false
+                    bomb: false,
+                    flag: false
                 };
                 if (cell[idx].Num != 0) {
                     cell[idx].box.text(cell[idx].Num);
@@ -62,36 +49,24 @@ $(function(){
                 idx++;
             } 
         }
-        
-        
         //css part
         $divMain.css({
             "height": (30*rows)+(5*(rows+1)) + "px",
             "width": (30*columns)+(5*(columns+1)) + "px",
         });
-        
         for (var i=0; i<rows; i++) {
             $(".row" + i).css({
                 "position":"absolute",
                 "top":((i*30)+((i+1)*5))+"px"
             });
         }
-        
         for (var i=0; i<columns; i++) {
             $(".column" + i).css({
                 "position":"absolute",
                 "left":((i*30)+((i+1)*5))+"px"
             });
         }
-        
-        
-        // console.log(cell[0]);
-        // console.log(cell[1]);
-        // console.log(cell[2]);
-        
-        
         //assign bombs
-        
         for (var i=0; i<bombNums; i++) {
             for (var j=0; j<cell.length; j++){
                 if((cell[j].cellX == BombPosX[i]) && (cell[j].cellY == BombPosY[i])){
@@ -99,76 +74,66 @@ $(function(){
                 }
             }
         }
-        
         for(var i = 0; i< cell.length; i++) {
             if (cell[i].bomb == true){
                 bombCnt++;
             }
         }
-        console.log(bombCnt);
-        
         //assign numbers
         for (var j=0; j<cell.length; j++){
             if (cell[j].bomb == true) {
-                    if((j-(columns+1)) >= 0){
-                        if ((cell[j].cellX-cell[j-(columns+1)].cellX)==1){
-                            cell[j-(columns+1)].Num++;
-                        }
+                if((j-(columns+1)) >= 0){
+                    if ((cell[j].cellX-cell[j-(columns+1)].cellX)==1){
+                        cell[j-(columns+1)].Num++;
                     }
-                    if((j-columns) >= 0){
-                            cell[j-columns].Num++;
+                }
+                if((j-columns) >= 0){
+                        cell[j-columns].Num++;
+                }
+                if((j-(columns-1)) >= 0){
+                    if (cell[j-(columns-1)].cellX != cell[j].cellX){
+                        cell[j-(columns-1)].Num++;
                     }
-                    if((j-(columns-1)) >= 0){
-                        if (cell[j-(columns-1)].cellX != cell[j].cellX){
-                            cell[j-(columns-1)].Num++;
-                        }
+                }
+                if((j-1) >= 0){
+                    if (cell[j-1].cellX == cell[j].cellX){
+                        cell[j-1].Num++;
                     }
-                    if((j-1) >= 0){
-                        if (cell[j-1].cellX == cell[j].cellX){
-                            cell[j-1].Num++;
-                        }
+                }
+                if((j+1) < cellNUms){
+                    if (cell[j+1].cellX == cell[j].cellX){
+                        cell[j+1].Num++;
                     }
-                    if((j+1) < cellNUms){
-                        if (cell[j+1].cellX == cell[j].cellX){
-                            cell[j+1].Num++;
-                        }
+                }
+                if((j+(columns-1)) <cellNUms){
+                    if (cell[j+(columns-1)].cellX != cell[j].cellX){
+                        cell[j+(columns-1)].Num++;
                     }
-                    if((j+(columns-1)) <cellNUms){
-                        if (cell[j+(columns-1)].cellX != cell[j].cellX){
-                            cell[j+(columns-1)].Num++;
-                        }
+                }
+                if((j+columns) <cellNUms){
+                    cell[j+columns].Num++;
+                }
+                if((j+(columns+1)) <cellNUms){
+                    if ((cell[j+(columns+1)].cellX-cell[j].cellX)==1){
+                        cell[j+(columns+1)].Num++;
                     }
-                    if((j+columns) <cellNUms){
-                        cell[j+columns].Num++;
-                    }
-                    if((j+(columns+1)) <cellNUms){
-                        if ((cell[j+(columns+1)].cellX-cell[j].cellX)==1){
-                            cell[j+(columns+1)].Num++;
-                        }
-                    }
+                }
             }
         }
-    
         
+        //click event
+        $(document).ready(function(){
+            for(var i = 0; i < cell.length; i++) {
+                (cell[i].box).click(leftClicked(i));
+            }
+        });
         
         //function for cell clicked
-        function createCallback( i ){
+        function leftClicked(i){
             return function(){
-                // console.log('you clicked cell' + i);
-                // console.log(cell[i].cellX,cell[i].cellY);
                 cellOpen(i);
             }
         }
-        
-        //function for cell right clicked
-        function rightClicked( i ) {
-            return function(){
-                alert(i);
-            }
-        }
-        
-        
-        
         //function for cell open
         function cellOpen(i) {
             if (cell[i].clicked == false) {
@@ -186,32 +151,28 @@ $(function(){
                     }
                 }
             }
+            resultChk();
         }
-        
-        
-        //click event
-        $(document).ready(function(){
-            for(var i = 0; i < cell.length; i++) {
-                (cell[i].box).click( createCallback( i ) );
+        //function for result check
+        function resultChk() {
+            var allClicked = true;
+            var win = true;
+            for (var i=0; i < cell.length; i++) {
+                if (cell[i].clicked == false) {
+                    allClicked = false;
+                }
             }
-        });
-        
-        
-        //rightclick event
-    
-        // (cell[0].box).on('contextmenu', function(){
-        //     // alert('right clicked');
-        //     return false;
-        // });
-        
-        $(document).ready(function(){
-            for(var i = 0; i < cell.length; i++) {
-                (cell[i].box).contextmenu(rightClicked(i));
+            for (var i=0; i < cell.length; i++) {
+                if (cell[i].bomb != cell[i].flag) {
+                    win = false;
+                }
             }
-        });
-        
-        
-        
+            if (win && allClicked) {
+                $("#msg").text("You won the game.");
+                $("#dialouge").css("visibility","visible");
+            }
+        }
+        //bomb clicked
         function bombClicked(i){
             for(var j=0;j<cellNUms; j++) {
                 cell[j].clicked = true;
@@ -219,11 +180,10 @@ $(function(){
                     cell[j].box.css("background-color","red");
                 }
             }
-            
             // alert('Game Over');
+            $("#msg").text("You lost the game.");
+            $("#dialouge").css("visibility","visible");
         }
-        
-        
         //when empty cell is clicked
         function emptyClicked(j) {
             console.log('empty clicked');
@@ -272,9 +232,35 @@ $(function(){
                 }
             }
         }
-    }
     
-    
+        //rightclick event
+        $(document).ready(function(){
+            for(var i = 0; i < cell.length; i++) {
+                (cell[i].box).contextmenu(rightClicked(i));
+            }
+        });
+        //function for cell right clicked
+        function rightClicked( i ) {
+            return function(){
+                if (!cell[i].clicked || cell[i].flag){
+                    if (!cell[i].flag){
+                        cell[i].box.css("background-color","yellow");
+                        cell[i].flag = true;
+                        cell[i].clicked = true;
+                        resultChk();
+                    }
+                    else {
+                        cell[i].box.css("background-color","#7e8b8c");
+                        cell[i].flag = false;
+                        cell[i].clicked = false;
+                    }
+                }
+                return false;
+            }
+        }
+        
+        
+    } 
 
     //game set part
     $gameSet.submit(function(){
@@ -339,6 +325,12 @@ $(function(){
             $(".custom").val("");
         }
         console.log(level);
+    });
+    
+    $( "#againBtn" ).click(function() {
+        $divMain.empty();
+        document.newGame.submit();
+        // mainGame();
     });
 
 });
